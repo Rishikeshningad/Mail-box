@@ -1,0 +1,45 @@
+.mailBox {
+    width: 80vw;
+    height: 50vw;
+    background-color: beige;
+    float: left;
+    overflow: scroll;
+}
+.sideNav {
+    width: 20vw;
+    background-color: rgb(171, 142, 108);
+    float: left;
+}
+.sideNav button {
+    width: 100%;
+}
+
+.btn {
+    font: inherit;
+    background-color: #3C53D4;
+    border: 3px solid white;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.btn1 {
+    font: inherit;
+    background-color: #3C53D4;
+    border: 3px solid white;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.wel{
+    font: bold;
+    justify-content: center;
+    font-style: italic;
+}

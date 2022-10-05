@@ -1,31 +1,40 @@
 import { Link } from 'react-router-dom';
 import classes from './Navigation.module.css';
+import { useSelector } from 'react-redux';
+import { authActions } from '../../store/authreducer';
+import { useDispatch } from 'react-redux';
+
+
 
 const Navigation = (props) => {
- 
+const dispatch = useDispatch(); 
+const isAuth = useSelector(state => state.auth.isAuthenticated);
+
 const clearToken = () => {
  // localStorage.getItem('idToken');
  localStorage.removeItem("idToken");
+ dispatch(authActions.logout);
+ window.location.href='/Login';
  };
 
   return (
     <header className={classes.header}>
-      <Link to='/'>
-        <div className={classes.logo}>Email Box</div>
-      </Link>
+     
+        <div className={classes.logo}>Mail Box</div>
+      
       <nav>
         <ul>
-        <ul><li>
+        {!isAuth && <ul><li>
             <Link to='/Signup'>Sign Up</Link>
           </li>
           <li>
             <Link to='/Login'>Login</Link>
-          </li></ul>
-          <li>
+          </li></ul>}
+         {isAuth && <li>
             <button onClick={clearToken}>
               <Link to="/Login">Logout</Link>
               </button>
-              </li>
+              </li>}
         </ul>
       </nav>
     </header>

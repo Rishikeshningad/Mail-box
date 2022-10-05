@@ -2,10 +2,12 @@ import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import classes from './SignUp.module.css';
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/authreducer";
 
 
 const Login = () => {
-  
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +27,7 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    dispatch(authActions.login());
 
     let url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDt8YinXVEx0C7pqrKBiYFIaGPM4P9HrBc";
