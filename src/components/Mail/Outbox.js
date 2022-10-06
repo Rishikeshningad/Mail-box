@@ -7,19 +7,35 @@ const Outbox = () => {
 
   useEffect(() => {
     fetch(
-      `https://mail-box-121cf-default-rtdb.firebaseio.com/${CleanUserEmail}sentemail.json`
+      `https://mail-box-7607c-default-rtdb.firebaseio.com/${CleanUserEmail}sentemails.json`
     )
     .then((res) => res.json())
     .then((data) => {
       setEmail(data);
+      console.log(data,'data');
     });
 }, [CleanUserEmail]);
 
-
+const emailList = email ? (
+<ul>
+  {Object.keys(email).map((item) => (
+    <p>
+      <label style={{ textAlign: "left"}}>To: {email[item].to}</label>
+      <hr/>
+      <label>Heading: {email[item].heading}</label>
+      <hr/>     
+      <p dangerouslySetInnerHTML={{ __html: email[item].body }}></p>
+    </p>
+  ))}
+</ul>
+) : (
+  <p>No Email Found</p>
+);
 
   return(
     <div>
       <h4>This is outbox</h4>
+      {emailList}
     </div>
   );
 };

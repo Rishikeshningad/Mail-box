@@ -33,8 +33,11 @@ const Compose = () => {
         },
       }
     ).then((res) => {
+      if(res.ok){
+        alert("Send to database");
       return res.json();
-    });
+    }  
+  });
 
     toEmailRef.current.value = "";
     emailHeadingRef.current.value = "";
@@ -69,3 +72,4 @@ const Compose = () => {
 };
 
 export default Compose;
+

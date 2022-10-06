@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Compose from "../Mail/Compose";
+import Inbox from "../Mail/Inbox";
 import Outbox from "../Mail/Outbox";
 import classes from "./Welcome.module.css";
 
@@ -39,6 +40,7 @@ const Welcome = () => {
       <div className={classes.mailBox}>
         {createMail && <Compose />}
         {inbox && <div>Inbox</div>}
+        {inbox && <Inbox/>}
         {outbox && <Outbox />}
       </div>
     </div>
