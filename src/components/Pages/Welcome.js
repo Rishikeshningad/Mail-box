@@ -8,6 +8,7 @@ const Welcome = () => {
   const [createMail, setCreateMail] = useState(false);
   const [inbox, setInbox] = useState(true);
   const [outbox, setOutbox] = useState(false);
+  const [count, setCount] = useState(0);
 
   const mailHandler = () => {
     setCreateMail(true);
@@ -29,18 +30,19 @@ const Welcome = () => {
 
   return (
     <div>
-      <h1 className={classes.wel}>Welcome to Mail Box</h1>
+      <h1 style={{ fontFamily: 'sans-serif', marginLeft:'20px'}}>Welcome to Mail Box</h1>
       <div className={classes.sideNav}>
-        <button onClick={mailHandler} className={classes.btn}>Create Email</button>
+        <button onClick={mailHandler} className={classes.btn}>Compose</button>
         <br/>
-        <button onClick={inboxHandler} className={classes.btn1}>Inbox</button>
+        <button onClick={inboxHandler} className={classes.btn1}>Inbox
+        <span>unread:{count}</span>
+        </button>
         <br/>
         <button onClick={outboxHandler} className={classes.btn1}>Outbox</button>
       </div>
       <div className={classes.mailBox}>
         {createMail && <Compose />}
-        {inbox && <div>Inbox</div>}
-        {inbox && <Inbox/>}
+        {inbox && <Inbox setIsCount={setCount}/>}
         {outbox && <Outbox />}
       </div>
     </div>

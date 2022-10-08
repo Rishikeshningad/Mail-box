@@ -16,11 +16,15 @@ function App() {
     <Fragment>
       <Layout>
         <Switch>
-          {!uiAuth && <Route path='/Login' exact> <Login/> </Route>}
+          {!uiAuth && <Fragment> <Route path='*' exact> <Login/> </Route>
+          </Fragment>}
           
+          {!uiAuth && <Route path='/Signup' > <SignUp/> </Route>}
+          
+
           {uiAuth && <Fragment>
-          <Route path='/SignUp'> <SignUp/> </Route>
-          <Route path='/email' exact> <Email/> </Route>
+         
+          <Route path='/email' > <Email/> </Route>
           <Route path='/welcome'> <Welcome/> </Route>
           </Fragment>}
         </Switch>

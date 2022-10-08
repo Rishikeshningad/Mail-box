@@ -16,6 +16,7 @@ const Outbox = () => {
     });
 }, [CleanUserEmail]);
 
+console.log(email, 'email');
 const emailList = email ? (
 <ul>
   {Object.keys(email).map((item) => (
@@ -24,7 +25,7 @@ const emailList = email ? (
       <hr/>
       <label>Heading: {email[item].heading}</label>
       <hr/>     
-      <p dangerouslySetInnerHTML={{ __html: email[item].body }}></p>
+      <p>{email[item].body.replace(/<[^>]*>/g, "")}</p>
     </p>
   ))}
 </ul>
