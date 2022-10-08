@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+
 
 const SingleMail = (props) => {
-    const cleanUserEmail = useSelector((state) => state.auth.cleanEmail);
-    console.log(cleanUserEmail);
-    console.log(props.data.email.isRead);
-    
+   
     const endPoint = props.data.ID;
+
+    console.log(props.data.email.isRead);
     console.log(endPoint, '..endPoint');
 
     useEffect(() => {
@@ -23,7 +22,7 @@ const SingleMail = (props) => {
                 heading: props.data.email.heading,
                 body: body1,
                 isRead: false,
-                id:props.data.email.id
+                id: props.data.email.id,
             }),
         }
     )
@@ -33,16 +32,30 @@ const SingleMail = (props) => {
     })
     .then((data) => {
        console.log(data);
-       return props.setBlue(props.data.email.id);
     });
 }, []); 
-console.log(props.data.email.body.replace(/<[^>]*>/g, ""));
+  
+  console.log(props.data.email.body.replace(/<[^>]*>/g, ""));
   const msg = props.data.email.body.replace(/<[^>]*>/g, "");
-            
+  
+  const deleteHandler = () => {
+    fetch(`https://mail-box-7607c-default-rtdb.firebaseio.com/sentemails/${endPoint}.json`,
+    {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json",
+        },
+    })
+     .then((res) => res.json())
+     .then((data) => {
+        props.onDelete(data);
+     });
+  };
 
     return (
    <div>
     <button style={{ aligntext: "right"}} onClick={props.onClose}>Back</button>
+    <button onClick={deleteHandler}>Delete</button>
     <div>
         <span>From:</span>
         <span>

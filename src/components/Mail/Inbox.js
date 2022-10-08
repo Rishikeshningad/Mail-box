@@ -1,14 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import SingleMail from "./SingleMail";
 
 const Inbox = (props) => {
     const [email, setEmail] = useState({});
     const [singleMail, setSingleMail] = useState("");
-    const [isRead, setIsRead] = useState(false);
     const [show, setShow] = useState(false);
 
-     const CleanUserEmail = useSelector((state) => state.auth.cleanEmail);
     
         useEffect(() => {
             fetch(
@@ -43,7 +40,7 @@ const Inbox = (props) => {
               email: email[e.currentTarget.id],
               ID: e.currentTarget.id,
             });
-            setIsRead(true);
+          
           };
         
           console.log(email);
@@ -133,22 +130,32 @@ const Inbox = (props) => {
               })}
             </ul>
           ) : (
-                            <p>No Emails Found</p>
-                        );
-    const onSingleMailCloseHandler = () => {
-                setShow(true);
-                setSingleMail("");
-            }            
+            <p>
+             No Emails Found
+            <button onClick={() => onSingleMailBackHandler()}>Back</button>  
+            </p>
+              );
+    
+    const onSingleMailBackHandler = () => {
+      setShow(true);
+      setSingleMail("");
+    };
+            
+    const onSingleMailDeleteHandler = (data) => {
+     setEmail(data);
+     setSingleMail('');
+    };
+    console.log(singleMail);        
 
     return(
         <Fragment>
-         <h3>This is Inbox</h3>
          {!singleMail && emailList}
         
         {singleMail && (
             <>
             <SingleMail
-            onClose={onSingleMailCloseHandler}
+            onClose={onSingleMailBackHandler}
+            onDelete={onSingleMailDeleteHandler}
             data={singleMail}
             setShow={setShow}
             />
