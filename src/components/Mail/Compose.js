@@ -4,7 +4,7 @@ import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import { useSelector } from "react-redux";
 import "./Compose.css";
-import { v4 } from "uuid";
+
 
 const Compose = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -13,7 +13,8 @@ const Compose = () => {
   const userEmail = useSelector((state) => state.auth.email);
   const CleanUserEmail = useSelector((state) => state.auth.cleanEmail);
 
-  console.log(editorState, 'editorState...')
+  console.log(userEmail, 'userEmail');
+  console.log(CleanUserEmail, 'CleanUserEmail');
 
   const onEditorChange = (currEditorState) => {
     setEditorState(currEditorState);
@@ -26,7 +27,7 @@ const Compose = () => {
       heading: emailHeadingRef.current.value,
       body: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       isRead:true,
-      id:v4(),
+      
     };
     console.log(emailData,'emailData..');
 
@@ -74,7 +75,7 @@ const Compose = () => {
           onEditorStateChange={onEditorChange}
         />
       </div>
-      <button onClick={sendMailHandler}>Send</button>
+      <button className="btn" onClick={sendMailHandler}>Send</button>
     </div>
   );
 };

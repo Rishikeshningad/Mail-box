@@ -53,6 +53,7 @@ const Inbox = (props) => {
                     id={item}
                     onClick={openEmailClickHandler}
                     style={{
+                      width: "80%",
                       border: "1px solid black",
                       textAlign: "left",
                       marginTop: "14px",
@@ -91,7 +92,7 @@ const Inbox = (props) => {
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
-                          width: "1000px",
+                          width: "90%",
                         }}
                       >
                         <div>

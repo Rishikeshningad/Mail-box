@@ -97,7 +97,7 @@ const SignUp = () => {
           onChange={confirmHandler}/>
         </div>
         <div className={classes.actions}>
-          <button>Sign Up</button>
+          <button>SignUp</button>
         </div>
       </form>
     </section>

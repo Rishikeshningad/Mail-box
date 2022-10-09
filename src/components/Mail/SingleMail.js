@@ -49,6 +49,7 @@ const SingleMail = (props) => {
      .then((res) => res.json())
      .then((data) => {
         props.onDelete(data);
+        alert('Mail deleted from database');
      });
   };
 

@@ -58,6 +58,8 @@ const Login = () => {
           }
         })
          .then((data) => {
+          localStorage.setItem("idToken", data.idToken);
+          dispatch(authActions.login(data.idToken));
             console.log(data.idToken);
             history.push('/welcome');
          })
@@ -100,6 +102,7 @@ return (
 
         <div className={classes.actions}>
           <button>Login</button>
+          <p>New User?<Link to="/signup">SignUp</Link></p>
         </div>
       </form>
         <button type="button" >

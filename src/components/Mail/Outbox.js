@@ -17,10 +17,11 @@ const Outbox = () => {
 }, [CleanUserEmail]);
 
 console.log(email, 'email');
+
 const emailList = email ? (
 <ul>
   {Object.keys(email).map((item) => (
-    <p>
+    <p style={{ border: "2px solid black", textAlign: "left" }} key={item}>
       <label style={{ textAlign: "left"}}>To: {email[item].to}</label>
       <hr/>
       <label>Heading: {email[item].heading}</label>
