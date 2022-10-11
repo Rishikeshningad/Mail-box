@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import classes from './SignUp.module.css';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const SignUp = () => {
@@ -99,6 +100,9 @@ const SignUp = () => {
         <div className={classes.actions}>
           <button>SignUp</button>
         </div>
+        <p>
+          Already Register?<Link to="/login">Login</Link>
+        </p>
       </form>
     </section>
   );

@@ -71,7 +71,7 @@ const Inbox = (props) => {
                           fontWeight: "bold",
                         }}
                       >
-                        From:
+                        To:
                       </span>
                       <span>{email[item].to}</span>
                     </div>

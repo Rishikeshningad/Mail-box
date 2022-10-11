@@ -4,6 +4,7 @@ import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import { useSelector } from "react-redux";
 import "./Compose.css";
+import { v4 } from "uuid";
 
 
 const Compose = () => {
@@ -27,7 +28,7 @@ const Compose = () => {
       heading: emailHeadingRef.current.value,
       body: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       isRead:true,
-      
+      id:v4(),
     };
     console.log(emailData,'emailData..');
 
@@ -51,6 +52,11 @@ const Compose = () => {
     toEmailRef.current.value = "";
     emailHeadingRef.current.value = "";
     setEditorState(EditorState.createEmpty());
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+    
   };
 
   return (
