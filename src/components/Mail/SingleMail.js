@@ -10,7 +10,7 @@ const SingleMail = (props) => {
 
     useEffect(() => {
         const body1 = props.data.email.body.replace(/<[^>]*>/g,"")
-        fetch(`https://mail-box-7607c-default-rtdb.firebaseio.com/sentemails/${endPoint}.json`,
+        fetch(`https://mail-box-ef6ae-default-rtdb.firebaseio.com/sentemails/${endPoint}.json`,
         {
             method: 'PATCH',
             headers: {
@@ -39,7 +39,7 @@ const SingleMail = (props) => {
   const msg = props.data.email.body.replace(/<[^>]*>/g, "");
   
   const deleteHandler = () => {
-    fetch(`https://mail-box-7607c-default-rtdb.firebaseio.com/sentemails/${endPoint}.json`,
+    fetch(`https://mail-box-ef6ae-default-rtdb.firebaseio.com/sentemails/${endPoint}.json`,
     {
         method: "DELETE",
         headers: {

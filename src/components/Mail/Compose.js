@@ -33,7 +33,7 @@ const Compose = () => {
     console.log(emailData,'emailData..');
 
     fetch(
-      `https://mail-box-7607c-default-rtdb.firebaseio.com/${CleanUserEmail}sentemails.json`,
+      `https://mail-box-ef6ae-default-rtdb.firebaseio.com/${CleanUserEmail}sentemails.json`,
       {
         method: "POST",
         body: JSON.stringify(emailData),
